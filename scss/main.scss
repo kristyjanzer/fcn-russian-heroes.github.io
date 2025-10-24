@@ -137,6 +137,14 @@ button {
 	background-size: cover;
 	background-position: 65% center;
 	min-height: 616px;
+
+	&__description {
+		margin-top: 60px;
+	}
+
+	&__sponsors {
+		margin-top: 94px;
+	}
 }
 
 
@@ -192,7 +200,6 @@ button {
 	line-height: 100%;
 	font-family: $primary-font;
 	color: $primary;
-	margin-top: 60px;
 	text-shadow: 0 10px 10px rgba(#000000, 35%);
 }
 
@@ -202,6 +209,24 @@ button {
 	color: $primary;
 	margin-top: 16px;
 	text-shadow: 0 10px 10px rgba(#000000, 35%);
+}
+
+.sponsors {
+	&__list {
+		display: flex;
+		align-items: center;
+		gap: 55px;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		height: 46px;
+	}
+	
+	img {
+		max-height: 100%;
+	}
 }
 
 
