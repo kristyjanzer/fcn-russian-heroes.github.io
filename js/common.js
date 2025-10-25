@@ -113,9 +113,8 @@ let totalSlides = $slider.slick("getSlick").slideCount;
 
 document.addEventListener('DOMContentLoaded', () => {
  const progressLine = document.querySelector('.progress-line');
- const progressFill = progressLine.querySelector('.progress-fill');
- const progressLabel = progressLine.querySelector('.progress-label');
- const markers = document.querySelectorAll('.marker');
+ const progressFill = progressLine.querySelector('.progress-line__fill');
+ const markers = document.querySelectorAll('.markers__mark');
  let lastValue = parseInt(progressLine.dataset.value);
  
  // Функция обновления прогресса
@@ -123,15 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
  const currentValue = parseInt(progressLine.dataset.value);
  
  progressFill.style.width = `${currentValue}%`;
- progressLabel.textContent = `${currentValue}%`;
  
  markers.forEach(marker => {
  const markerValue = parseInt(marker.dataset.value);
  
  // Обновляем стили маркеров через CSS переменные
  if (currentValue >= markerValue) {
- marker.style.setProperty('--before-width', '16px');
- marker.style.setProperty('--before-height', '16px');
+ marker.style.setProperty('--before-width', '20px');
+ marker.style.setProperty('--before-height', '20px');
  } else {
  marker.style.setProperty('--before-width', '0');
  marker.style.setProperty('--before-height', '0');
