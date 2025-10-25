@@ -7,7 +7,7 @@ $('.content-ranks-slider').slick({
     infinite: false,
     responsive: [
       {
-        breakpoint: 1400,
+        breakpoint: 1600,
           settings: {
             dots: true,
             arrows: false,
@@ -16,7 +16,7 @@ $('.content-ranks-slider').slick({
         },
       },
       {
-        breakpoint: 1200,
+        breakpoint: 1100,
           settings: {
             dots: true,
             arrows: false,
@@ -112,50 +112,45 @@ let totalSlides = $slider.slick("getSlick").slideCount;
 
 
 document.addEventListener('DOMContentLoaded', () => {
- const progressLine = document.querySelector('.progress-line');
- const progressFill = progressLine.querySelector('.progress-line__fill');
- const markers = document.querySelectorAll('.markers__mark');
- let lastValue = parseInt(progressLine.dataset.value);
- 
- // Функция обновления прогресса
- function updateProgress() {
- const currentValue = parseInt(progressLine.dataset.value);
- 
- progressFill.style.width = `${currentValue}%`;
- 
- markers.forEach(marker => {
- const markerValue = parseInt(marker.dataset.value);
- 
- // Обновляем стили маркеров через CSS переменные
- if (currentValue >= markerValue) {
- marker.style.setProperty('--before-width', '20px');
- marker.style.setProperty('--before-height', '20px');
- } else {
- marker.style.setProperty('--before-width', '0');
- marker.style.setProperty('--before-height', '0');
- }
- });
- }
+    // Находим все контейнеры прогресс-баров
+    const progressContainers = document.querySelectorAll('.progress-container');
 
- // Инициализируем сразу при загрузке
- updateProgress();
+    // Функция для инициализации одного прогресс-бара
+    function initProgressBar(container) {
+        const progressLine = container.querySelector('.progress-line');
+        const progressFill = progressLine.querySelector('.progress-line__fill');
+        const markers = container.querySelectorAll('.markers__mark');
+        let lastValue = parseInt(progressLine.dataset.value);
 
- // Проверяем изменения каждые 100 миллисекунд
- const interval = setInterval(() => {
- updateProgress();
- }, 100);
+        // Функция обновления прогресса
+        function updateProgress() {
+            const currentValue = parseInt(progressLine.dataset.value);
 
- // Функция для остановки проверки при необходимости
- function stopChecking() {
- clearInterval(interval);
- }
+            progressFill.style.width = `${currentValue}%`;
 
- // Добавим начальную инициализацию стилей
-document.addEventListener('DOMContentLoaded', () => {
- updateProgress();
-});
+            markers.forEach(marker => {
+                const markerValue = parseInt(marker.dataset.value);
 
-// Пример использования:
-// Чтобы изменить значение прогресса:
-// document.querySelector('.progress-line').dataset.value = 75;
+                // Обновляем стили маркеров через CSS переменные
+                if (currentValue >= markerValue) {
+                    marker.style.setProperty('--before-width', '20px');
+                    marker.style.setProperty('--before-height', '20px');
+                } else {
+                    marker.style.setProperty('--before-width', '0');
+                    marker.style.setProperty('--before-height', '0');
+                }
+            });
+        }
+
+        // Инициализируем сразу при загрузке
+        updateProgress();
+
+        // Проверяем изменения каждые 100 миллисекунд
+        setInterval(() => {
+            updateProgress();
+        }, 100);
+    }
+
+    // Инициализируем все прогресс-бары
+    progressContainers.forEach(initProgressBar);
 });
