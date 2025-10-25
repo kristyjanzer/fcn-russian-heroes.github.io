@@ -108,3 +108,56 @@ let totalSlides = $slider.slick("getSlick").slideCount;
  $slider.on('error', function(message) {
  console.error('Slick error:', message);
  });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+ const progressLine = document.querySelector('.progress-line');
+ const progressFill = progressLine.querySelector('.progress-fill');
+ const progressLabel = progressLine.querySelector('.progress-label');
+ const markers = document.querySelectorAll('.marker');
+ let lastValue = parseInt(progressLine.dataset.value);
+ 
+ // Функция обновления прогресса
+ function updateProgress() {
+ const currentValue = parseInt(progressLine.dataset.value);
+ 
+ progressFill.style.width = `${currentValue}%`;
+ progressLabel.textContent = `${currentValue}%`;
+ 
+ markers.forEach(marker => {
+ const markerValue = parseInt(marker.dataset.value);
+ 
+ // Обновляем стили маркеров через CSS переменные
+ if (currentValue >= markerValue) {
+ marker.style.setProperty('--before-width', '16px');
+ marker.style.setProperty('--before-height', '16px');
+ } else {
+ marker.style.setProperty('--before-width', '0');
+ marker.style.setProperty('--before-height', '0');
+ }
+ });
+ }
+
+ // Инициализируем сразу при загрузке
+ updateProgress();
+
+ // Проверяем изменения каждые 100 миллисекунд
+ const interval = setInterval(() => {
+ updateProgress();
+ }, 100);
+
+ // Функция для остановки проверки при необходимости
+ function stopChecking() {
+ clearInterval(interval);
+ }
+
+ // Добавим начальную инициализацию стилей
+document.addEventListener('DOMContentLoaded', () => {
+ updateProgress();
+});
+
+// Пример использования:
+// Чтобы изменить значение прогресса:
+// document.querySelector('.progress-line').dataset.value = 75;
+});
