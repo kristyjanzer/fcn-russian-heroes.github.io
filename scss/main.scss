@@ -131,6 +131,12 @@ button {
 	}
 }
 
+a { 
+	word-break: break-all;
+	white-space: normal;
+	overflow-wrap: break-word;
+} 
+
 section {
 	padding: 80px 0;
 }
@@ -1163,6 +1169,113 @@ section {
 }
 
 
+.content-rules {
+	background: url('../img/bg-3.png'), rgba(46, 58, 22, 1);
+	background-position: top center;
+	background-repeat: no-repeat;
+	min-height: 1048px;
+
+	&__wrap {
+		display: flex;
+		flex-direction: column;
+		gap: 60px;
+	}
+
+	&__title {
+		margin-bottom: 0;
+		color: $accent;
+	}
+
+	&__subtitle {
+		font-size: 32px;
+		font-weight: 500;
+		color: $accent;
+
+		& + .content-rules-list {
+			margin-top: 40px;
+		}
+	}
+
+	&__button {
+		margin-top: 40px;
+	}
+}
+
+.content-rules-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding-left: 20px;
+
+	&__item {
+		list-style-type: auto;
+		position: relative;
+		color: $white;
+		font-size: 20px;
+
+		> .content-rules-list {
+			margin-top: 30px;
+		}
+	}
+
+	&__link {
+		color: $white;
+		display: inline-block;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&--disc {
+		padding-left: 10px;
+
+		.content-rules-list__item > {
+			.content-rules-list {
+				margin-top: 20px;
+
+				.content-rules-list__item {
+					list-style-type: auto;
+
+					&::before {
+						display: none;
+					}
+				}
+			}
+		}
+
+		.content-rules-list {
+			&__item {
+				list-style-type: none;
+	
+				&::before {
+					content: '';
+					display: block;
+					width: 5px;
+					height: 5px;
+					border-radius: 50%;
+					background-color: $white;
+					position: absolute;
+					top: 8px;
+					left: -17px;
+				}
+			}
+		}
+
+		&-accent {
+			.content-rules-list {
+				&__item {
+					&::before {
+						background-color: $accent;
+					}
+				}
+			}
+		}
+	}
+}
+
+
 
 
 /************* Media *****************************/
@@ -1498,6 +1611,28 @@ section {
 
 		&__text {
 			font-size: 18px;
+		}
+	}
+
+	.content-rules {
+		&__wrap {
+			gap: 30px;
+		}
+
+		&__subtitle {
+			font-size: 24px;
+			
+			& + .content-rules-list {
+				margin-top: 20px;
+			}
+		}
+	}
+
+	.content-rules-list {
+		&__item {
+			> .content-rules-list {
+				margin-top: 20px;
+			}
 		}
 	}
 }
