@@ -1125,7 +1125,6 @@ section {
 	}
 
 	&__image {
-		overflow: hidden;
 		position: absolute;
 		bottom: 0;
 		right: 0;
@@ -1310,6 +1309,10 @@ section {
 	&__info {
 		max-width: 1032px;
 	}
+
+	&__image {
+		flex: 1 0 auto;
+	}
 }
 
 .triumph {
@@ -1349,11 +1352,11 @@ section {
 		&:first-child {
 			border-top-left-radius: 16px;
 			border-bottom-left-radius: 16px;
-			padding-left: 90px;
+			padding-left: 5%;
 		}
 
 		&:nth-child(2) {
-			padding-left: 104px;
+			padding-left: 6%;
 		}
 
 		&:last-child {
@@ -1377,6 +1380,99 @@ section {
 			height: 100%;
 			object-fit: contain;
 		}
+	}
+}
+
+.mastery {
+	background-image: url('../img/bg-5.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	min-height: 966px;
+
+	&__subtitle {
+		margin-top: 15px;
+	}
+
+	&__info {
+		margin-top: 30px;
+		color: $white;
+		font-size: 22px;
+		max-width: 1440px;
+	}
+
+	&__box {
+		margin-top: 40px;
+	}
+
+	&__button {
+		margin: 40px auto 0;
+	}
+}
+
+.mastery-box {
+	display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px 32px;
+
+	&__item {
+		border-radius: 32px;
+		background: rgba(130, 148, 101, 0.8);
+		min-height: 210px;
+		padding: 37px 48px;
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+
+		&:first-child {
+			grid-row: span 2 / span 2;
+
+			.mastery-box__info {
+				font-size: 32px;
+			}
+		}
+
+		&:nth-child(4) {
+			grid-column-start: 2;
+		}
+
+		&:nth-child(5) {
+			grid-column-start: 3;
+		}
+	}
+
+	&__price {
+		font-family: $primary-font;
+		font-size: 46px;
+		color: $accent;
+		z-index: 1;
+
+		span {
+			font-size: 48px;
+		}
+	}
+
+	&__info {
+		font-size: 24px;
+		font-weight: 500;
+		margin-top: 20px;
+		max-width: 260px;
+		z-index: 1;
+	}
+
+	&__title {
+		font-family: $primary-font;
+		font-size: 44px;
+		z-index: 1;
+	}
+
+	&__image {
+		position: absolute;
+		bottom: -5px;
+		right: 0;
+		z-index: 0;
 	}
 }
 
@@ -1444,17 +1540,17 @@ section {
 	}
 	
 	.main-title {
-		font-size: 54px;
+		font-size: 50px;
 	}
 
 	.main-subtitle {
-		font-size: 36px;
+		font-size: 34px;
 		line-height: 100%;
 	}
 
 	.dates {
 		&__text {
-			font-size: 20px;
+			font-size: 19px;
 		}
 	}
 
@@ -1584,6 +1680,83 @@ section {
 			margin: 20px auto 0;
 		}
 	}
+
+	.mastery {
+		&__info {
+			font-size: 18px;
+			margin-top: 40px;
+		}
+
+		&__box {
+			margin-top: 35px;
+		}
+	}
+
+	.mastery-box {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+		gap: 20px;
+
+		&__item {
+			&:first-child {
+				grid-column: span 2 / span 2;
+				grid-row: auto;
+			}
+
+			&:nth-child(2) {
+				grid-row-start: 2;
+			}
+
+			&:nth-child(3) {
+				grid-row-start: 2;
+			}
+
+			&:nth-child(5) {
+				grid-row-start: 3;
+				grid-column-start: auto;
+			}
+		}
+	}
+
+	.challenge-sponsors {
+		flex-wrap: wrap;
+
+		&__item {
+			flex-basis: 50%;
+
+			&:first-child {
+    			border-bottom-left-radius: 0;
+			}
+
+			&:nth-child(2) {
+				border-top-right-radius: 16px;
+			}
+
+			&:nth-child(3) {
+				border-bottom-left-radius: 16px;
+			}
+
+			&:last-child {
+				border-top-right-radius: 0;
+    			border-bottom-right-radius: 16px;
+			}
+		}
+	}
+
+	.challenge {
+		&__sponsors {
+			margin-top: 33px;
+		}
+
+		&__columns {
+			flex-direction: column;
+			margin-top: 50px;
+		}
+
+		&__image {
+			margin: 27px auto 0;
+		}
+	}
 }
 
 
@@ -1680,6 +1853,12 @@ section {
 		}
 	}
 
+	.sponsors {
+		&__item {
+			height: 28px;
+		}
+	}
+
 	.content-ranks-slider {
 		&__title {
 			font-size: 34px;
@@ -1743,6 +1922,89 @@ section {
 			> .content-rules-list {
 				margin-top: 20px;
 			}
+		}
+	}
+
+	.mastery-box {
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(5, 1fr);
+
+		&__item {
+			padding: 37px 20px;
+			min-height: 320px;
+
+			&:first-child {
+				grid-column: auto;
+
+				.mastery-box__info {
+					font-size: 24px;
+				}
+			}
+
+			&:nth-child(2) {
+				grid-row-start: auto;;
+			}
+
+			&:nth-child(3) {
+				grid-row-start: auto;;
+			}
+
+			&:nth-child(4) {
+				grid-column-start: auto;;
+			}
+
+			&:nth-child(5) {
+				grid-row-start: auto;
+			}
+		}
+
+		&__price {
+			font-size: 32px;
+
+			span {
+				font-size: 34px;
+			}
+		}
+
+		&__title {
+			font-size: 34px;
+		}
+	}
+
+	.challenge-sponsors {
+		flex-direction: column;
+
+		&__item {
+			padding: 22px 20px 30px;
+			gap: 20px;
+
+			&:first-child {
+    			border-top-right-radius: 16px;
+			}
+
+			&:nth-child(2) {
+				border-top-right-radius: 0;
+			}
+
+			&:nth-child(3) {
+				border-bottom-left-radius: 0;
+			}
+
+			&:last-child {
+    			border-bottom-left-radius: 16px;
+    			border-bottom-right-radius: 16px;
+			}
+		}
+	}
+
+	.triumph {
+		background-image: url('../img/bg-4-mobile.jpg');
+		background-position: bottom center;
+		min-height: 853px;
+
+		&__text {
+			margin-top: 40px;
+			font-size: 18px;
 		}
 	}
 }
