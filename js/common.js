@@ -50,79 +50,80 @@ $('.rating-info-slider').slick({
 let totalSlides = $slider.slick("getSlick").slideCount;
 
  function createPagination(currentSlide) {
- $pagination.empty();
- 
- const start = Math.max(1, currentSlide - visibleNumbers);
- const end = Math.min(totalSlides, currentSlide + visibleNumbers);
- 
- if (start > 1) {
- $pagination.append('<span class="dots">...</span>');
- }
- 
- for(let i = start; i <= end; i++) {
- createDot(i);
- }
- 
- if (end < totalSlides) {
- $pagination.append('<span class="dots">...</span>');
- }
+    $pagination.empty();
+    
+    const start = Math.max(1, currentSlide - visibleNumbers);
+    const end = Math.min(totalSlides, currentSlide + visibleNumbers);
+    
+    if (start > 1) {
+      $pagination.append('<span class="dots">...</span>');
+    }
+    
+    for(let i = start; i <= end; i++) {
+      createDot(i);
+    }
+    
+    if (end < totalSlides) {
+      $pagination.append('<span class="dots">...</span>');
+    }
  }
 
  function createDot(number) {
- const $dot = $('<div class="dot">' + number + '</div>');
- $dot.click(function() {
- $slider.slick('slickGoTo', number - 1);
- updatePagination();
- });
- $pagination.append($dot);
+    const $dot = $('<div class="dot">' + number + '</div>');
+
+    $dot.click(function() {
+      $slider.slick('slickGoTo', number - 1);
+      updatePagination();
+    });
+
+    $pagination.append($dot);
  }
 
  function updatePagination() {
- const currentSlide = $slider.slick("slickCurrentSlide") + 1;
- createPagination(currentSlide);
- updateActiveDot();
+    const currentSlide = $slider.slick("slickCurrentSlide") + 1;
+    createPagination(currentSlide);
+    updateActiveDot();
  }
 
  function updateActiveDot() {
- const currentSlide = $slider.slick("slickCurrentSlide") + 1;
- $pagination.find('.dot').removeClass('active');
- const activeDot = $pagination.find('.dot').filter(function() {
- return parseInt($(this).text()) === currentSlide;
- });
- if (activeDot.length) {
- activeDot.addClass('active');
- }
+    const currentSlide = $slider.slick("slickCurrentSlide") + 1;
+    $pagination.find('.dot').removeClass('active');
+
+    const activeDot = $pagination.find('.dot').filter(function() {
+      return parseInt($(this).text()) === currentSlide;
+    });
+
+    if (activeDot.length) {
+      activeDot.addClass('active');
+    }
  }
 
  updatePagination();
 
  $slider.on('afterChange', function(event, slick, currentSlide) {
- updatePagination();
+    updatePagination();
  });
 
  $slider.on('init reInit', function() {
- totalSlides = $slider.slick("getSlick").slideCount;
- updatePagination();
+    totalSlides = $slider.slick("getSlick").slideCount;
+    updatePagination();
  });
 
  $slider.on('error', function(message) {
- console.error('Slick error:', message);
+    console.error('Slick error:', message);
  });
 
 
-
+// Progress Bar
 document.addEventListener('DOMContentLoaded', () => {
-    // Находим все контейнеры прогресс-баров
     const progressContainers = document.querySelectorAll('.progress-container');
 
-    // Функция для инициализации одного прогресс-бара
     function initProgressBar(container) {
         const progressLine = container.querySelector('.progress-line');
         const progressFill = progressLine.querySelector('.progress-line__fill');
         const markers = container.querySelectorAll('.markers__mark');
         let lastValue = parseInt(progressLine.dataset.value);
 
-        // Функция обновления прогресса
         function updateProgress() {
             const currentValue = parseInt(progressLine.dataset.value);
 
@@ -131,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
             markers.forEach(marker => {
                 const markerValue = parseInt(marker.dataset.value);
 
-                // Обновляем стили маркеров через CSS переменные
                 if (currentValue >= markerValue) {
                     marker.style.setProperty('--before-width', '20px');
                     marker.style.setProperty('--before-height', '20px');
@@ -142,15 +142,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Инициализируем сразу при загрузке
         updateProgress();
 
-        // Проверяем изменения каждые 100 миллисекунд
         setInterval(() => {
             updateProgress();
         }, 100);
     }
 
-    // Инициализируем все прогресс-бары
     progressContainers.forEach(initProgressBar);
+});
+
+
+
+// Button Top
+const scrollBtn = document.querySelector('.scroll-btn');
+const rootElement = document.documentElement;
+
+function checkScroll() {
+    const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+    
+    if ((rootElement.scrollTop / scrollTotal) > 0.25) {
+        scrollBtn.style.display = 'block';
+    } else {
+        scrollBtn.style.display = 'none';
+    }
+}
+
+scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+
+window.addEventListener('scroll', () => {
+    checkScroll();
 });
