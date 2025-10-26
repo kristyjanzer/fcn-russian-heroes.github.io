@@ -158,6 +158,19 @@ section {
 	}
 }
 
+.subtitle {
+	font-size: 24px;
+	font-weight: 500;
+
+	&--white {
+		color: $white;
+	}
+
+	&--accent {
+		color: $accent;
+	}
+}
+
 .text-accent {
 	color: $accent;
 	font-size: 22px;
@@ -279,9 +292,6 @@ section {
 	background-position: 100% top;
 
 	&__subtitle {
-		color: $accent;
-		font-size: 24px;
-		font-weight: 500;
 		margin-top: 15px;
 	}
 
@@ -566,7 +576,7 @@ section {
 	th {
 		background: transparent;
 		color: $black;
-		padding: 15px 25px;
+		padding: 5px 15px 10px;
 		font-size: 20px;
 		text-align: left;
 		font-weight: 400;
@@ -943,8 +953,6 @@ section {
 	}
 }
 
-
-
 .fight {
 	background-image: url('../img/bg-2.png');
 	background-repeat: no-repeat;
@@ -1005,7 +1013,6 @@ section {
     	justify-content: center;
 	}
 }
-
 
 .content-ranks {
 	&__slider {
@@ -1151,7 +1158,6 @@ section {
 	}
 }
 
-
 .scroll-btn {
     position: fixed;
     bottom: 30px;
@@ -1167,7 +1173,6 @@ section {
 		opacity: 0.8;
 	}
 }
-
 
 .content-rules {
 	background: url('../img/bg-3.png'), rgba(46, 58, 22, 1);
@@ -1275,6 +1280,107 @@ section {
 	}
 }
 
+.challenge {
+	background-color: #538884;
+
+	&__subtitle {
+		margin-top: 40px;
+	}
+
+	&__sponsors {
+		margin-top: 66px;
+	}
+
+	&__columns {
+		margin-top: 80px;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+
+	&__text {
+		color: $white;
+		font-size: 22px;
+
+		& + & {
+			margin-top: 25px;
+		}
+	}
+
+	&__info {
+		max-width: 1032px;
+	}
+}
+
+.triumph {
+	background-image: url('../img/bg-4.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 70% center;
+	min-height: 451px;
+
+	&__text {
+		margin-top: 70px;
+		font-size: 22px;
+		color: $white;
+		max-width: 932px;
+	}
+}
+
+
+.challenge-sponsors {
+	min-height: 198px;
+	display: flex;
+	
+	&__item {
+		width: 100%;
+		padding: 40px;
+		background-color: #BCAD9B;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 50px;
+
+		&--general {
+			background-color: #E6B574;
+		}
+
+		&:first-child {
+			border-top-left-radius: 16px;
+			border-bottom-left-radius: 16px;
+			padding-left: 90px;
+		}
+
+		&:nth-child(2) {
+			padding-left: 104px;
+		}
+
+		&:last-child {
+			border-top-right-radius: 16px;
+			border-bottom-right-radius: 16px;
+		}
+	}
+
+	&__logo {
+		height: 46px;
+
+		svg {
+			height: 100%;
+
+			path {
+				fill: $black;
+			}
+		}
+
+		img {
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+}
+
+
 
 
 
@@ -1368,6 +1474,10 @@ section {
 		line-height: 100%;
 	}
 
+	.subtitle {
+		font-size: 18px;
+	}
+
 	section {
 		padding: 60px 0;
 	}
@@ -1376,7 +1486,6 @@ section {
 		background-position: center;
 
 		&__subtitle {
-			font-size: 18px;
 			margin-top: 24px;
 		}
 
@@ -1460,6 +1569,7 @@ section {
 	.fight {
 		&__wrap {
 			flex-direction: column;
+			gap: 40px;
 		}
 
 		&__col {
@@ -1548,7 +1658,7 @@ section {
 
 		td {
 			font-size: 18px;
-			padding: 12px 15px;
+			padding: 12px 10px;
 		}
 	}
 
@@ -1639,7 +1749,9 @@ section {
 
 
 @media (max-width: 400px) {
-
+	.tasks-years__button {
+		flex-basis: 100%;
+	}
 }
 
 
