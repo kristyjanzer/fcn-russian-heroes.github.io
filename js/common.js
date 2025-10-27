@@ -21,7 +21,17 @@ $('.content-ranks-slider').slick({
             dots: true,
             arrows: false,
             slidesToShow: 1,
+            slidesToScroll: 1
+        },
+      },
+      {
+        breakpoint: 500,
+          settings: {
+            dots: true,
+            arrows: false,
+            slidesToShow: 1,
             slidesToScroll: 1,
+            variableWidth: true
         },
       }
     ]
@@ -178,4 +188,19 @@ scrollBtn.addEventListener('click', () => {
 
 window.addEventListener('scroll', () => {
     checkScroll();
+});
+
+
+// Tasks-years Button
+const buttons = document.querySelectorAll('.tasks-years__button');
+
+function handleButtonClick(event) {
+    buttons.forEach(button => {
+        button.classList.remove('tasks-years__button--active');
+    });
+    event.target.classList.add('tasks-years__button--active');
+}
+
+buttons.forEach(button => {
+    button.addEventListener('click', handleButtonClick);
 });
