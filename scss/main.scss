@@ -1877,10 +1877,11 @@ section {
 
 	.sponsors {
 		&__item {
-        	height: 1%;
+			height: 28px;
+			display: block;
 
 			img {
-				height: 28px;
+				display: block;
 			}
 		}
 	}
