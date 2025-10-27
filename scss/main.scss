@@ -278,7 +278,6 @@ section {
 		display: flex;
 		align-items: center;
 		height: 46px;
-		overflow: hidden;
 	}
 	
 	img {
@@ -1878,7 +1877,11 @@ section {
 
 	.sponsors {
 		&__item {
-			height: 28px;
+        	height: 1%;
+
+			img {
+				height: 28px;
+			}
 		}
 	}
 
