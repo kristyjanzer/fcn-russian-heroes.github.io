@@ -1878,11 +1878,9 @@ section {
 	.sponsors {
 		&__item {
 			height: 28px;
-			display: block;
-
-			img {
-				display: block;
-			}
+			width: auto;
+			display: flex;
+			align-items: flex-start;
 		}
 	}
 
