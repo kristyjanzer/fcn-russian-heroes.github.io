@@ -1761,6 +1761,10 @@ section {
 
 
 @media (max-width: 700px) {
+	.text-accent {
+		font-size: 20px;
+	}
+	
 	.rating {
 		&__links {
 			flex-direction: column;
